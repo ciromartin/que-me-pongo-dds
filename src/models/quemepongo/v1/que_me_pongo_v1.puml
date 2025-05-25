@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Prenda {
+    +tipo: TipoPrenda
+    +material: string,
+    +colorPrimario: Color
+    +colorSecundario: Color
+    +Prenda(TipoPrenda tipo, string material, Color colorPrimario, Color colorSecundario)
+    +getCategoria(): Categoria
+    +getMaterial(): string
+}
+
+
+
+enum Categoria {
+    SUPERIOR,
+    INFERIOR,
+    CALZADO,
+    ACCESORIO
+}
+
+enum TipoPrenda {
+    ZAPATO,
+    CAMISA,
+    PANTALON,
+    CHAQUETA,
+}
+
+class TipoPrenda {
+    TipoPrenda(Categoria categoria)
+    +getCategoria(): Categoria
+}
+
+class Color {
+    -rojo: int
+    -verde: int
+    -azul: int
+}
+
+enum Material {
+    ALGODON
+    LANA
+    SEDA
+    POLIESTER
+    CUERO
+    JEAN
+}
+
+Prenda --> TipoPrenda
+Prenda --> Color
+Prenda --> Material
+TipoPrenda --> Categoria
+@enduml

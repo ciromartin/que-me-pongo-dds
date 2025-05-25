@@ -1,0 +1,65 @@
+@startuml
+class Prenda {
+    +tipo: TipoPrenda
+    +colorPrincipal: Color
+    +colorSecundario: Color
+    +trama: Trama
+    +material: Material
+}
+
+class PrendaBuilder {
+    +PrendaBuilder(TipoPrenda tipo)
+    +PrendaBuilder(Prenda prenda)
+    +conColorPrincipal(Color color): PrendaBuilder
+    +conColorSecundario(Color color): PrendaBuilder
+    +conTrama(Trama trama): PrendaBuilder
+    +conMaterial(Material material): PrendaBuilder
+    +borrador(): Prenda
+    +build(): Prenda
+}
+
+enum Categoria {
+    SUPERIOR
+    INFERIOR
+    CALZADO
+    ACCESORIO
+}
+
+enum TipoPrenda {
+    CAMISA
+    PANTALON
+    ZAPATO
+    ANTEOJOS
+}
+
+enum Trama {
+    LISO
+    RAYADO
+    LUNARES
+    CUADROS
+    ESTAMPADO
+}
+
+enum Material {
+    ALGODON
+    LANA
+    SEDA
+    POLIESTER
+    CUERO
+    JEAN
+}
+
+class Color {
+    -rojo: int
+    -verde: int
+    -azul: int
+}
+
+
+Prenda --> TipoPrenda
+Prenda --> Color
+Prenda --> Trama
+Prenda --> Material
+TipoPrenda --> Categoria
+PrendaBuilder --> Prenda
+@enduml
