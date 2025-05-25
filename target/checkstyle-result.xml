@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.3">
+<file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/uniformes/Uniforme.java">
+<error line="7" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="12" column="3" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="18" severity="warning" message="La línea es mayor de 100 caracteres (encontrado 103)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" severity="warning" message="La línea es mayor de 100 caracteres (encontrado 103)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="24" severity="warning" message="La línea es mayor de 100 caracteres (encontrado 104)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
 <file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Material.java">
 <error line="3" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
 </file>
@@ -33,6 +40,18 @@
 <file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Prenda.java">
 <error line="3" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
 <error line="10" column="3" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/Sastre.java">
+<error line="6" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="7" column="3" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/SastreSanJuan.java">
+<error line="3" column="36" severity="warning" message="Usar la importación con &apos;.*&apos; debería evitarse - quemepongo.v2.domain.prendas.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="6" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+</file>
+<file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/SastreJohnson.java">
+<error line="4" column="36" severity="warning" message="Usar la importación con &apos;.*&apos; debería evitarse - quemepongo.v2.domain.prendas.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="7" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
 </file>
 <file name="/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/guards/Guard.java">
 <error line="3" column="1" severity="warning" message="Falta el comentario Javadoc." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>

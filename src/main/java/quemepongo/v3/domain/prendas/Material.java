@@ -6,7 +6,9 @@ public enum Material {
   SEDA("Seda"),
   POLIESTER("Poliester"),
   CUERO("Cuero"),
-  JEAN("Jean");
+  JEAN("Jean"),
+  PIQUE("Pique"),
+  ACETATO("Acetato");
 
   private final String nombre;
 

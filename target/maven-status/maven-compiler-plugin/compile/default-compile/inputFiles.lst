@@ -3,8 +3,11 @@
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/Categoria.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/builders/PrendaBuilder.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Trama.java
+/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/SastreSanJuan.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Prenda.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Material.java
+/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/Sastre.java
+/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/uniformes/Uniforme.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/TipoPrenda.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/builders/PrendaBuilder.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/guards/Guard.java
@@ -13,4 +16,5 @@
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/Material.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/Prenda.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/prendas/Categoria.java
+/Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v2/domain/sastres/SastreJohnson.java
 /Users/admintrator/Documentos/facultad/dds/tps/QueMePongo/src/main/java/quemepongo/v3/domain/prendas/Color.java
