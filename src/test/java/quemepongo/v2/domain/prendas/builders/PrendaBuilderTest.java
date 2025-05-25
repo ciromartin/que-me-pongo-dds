@@ -101,6 +101,36 @@ public class PrendaBuilderTest {
   }
 
   @Test
+  void conMaterial_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conMaterial(null)
+    );
+    assertEquals("el material no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conTrama_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conTrama(null)
+    );
+    assertEquals("la Trama no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conColorPrincipal_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conColorPrincipal(null)
+    );
+    assertEquals("el color principal no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
   void build_cuandoFaltaTipo_deberiaLanzarExcepcion() {
     PrendaBuilder builder = new PrendaBuilder((TipoPrenda) null)
         .conColorPrincipal(Color.crearBlanco())

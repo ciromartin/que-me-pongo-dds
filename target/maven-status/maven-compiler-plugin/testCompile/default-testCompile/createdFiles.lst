@@ -1,1 +1,10 @@
-quemepongo/v1/domain/PrendaBuilderTest.class
+quemepongo/v2/domain/ColorTest.class
+quemepongo/v3/domain/domain/MaterialTest.class
+quemepongo/v3/domain/domain/ColorTest.class
+quemepongo/v3/domain/domain/TipoPrendaTest.class
+quemepongo/v3/domain/domain/prendas/builders/PrendaBuilderTest.class
+quemepongo/v2/domain/MaterialTest.class
+quemepongo/v2/domain/prendas/builders/PrendaBuilderTest.class
+quemepongo/v2/domain/TipoPrendaTest.class
+quemepongo/v3/domain/domain/guards/GuardTest.class
+quemepongo/v2/domain/guards/GuardTest.class

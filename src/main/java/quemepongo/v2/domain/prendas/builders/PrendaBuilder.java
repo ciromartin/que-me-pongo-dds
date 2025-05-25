@@ -1,11 +1,13 @@
 package quemepongo.v2.domain.prendas.builders;
 
+import quemepongo.v2.domain.guards.Guard;
 import quemepongo.v2.domain.prendas.*;
 
 public class PrendaBuilder {
   private TipoPrenda tipo;
   private Material material;
-  private Trama trama;
+  private final Trama defaultTrama = Trama.LISO;
+  private Trama trama = defaultTrama;
   private Color colorPrincipal;
   private Color colorSecundario;
 
@@ -25,22 +27,25 @@ public class PrendaBuilder {
   private void clear() {
     this.tipo = null;
     this.material = null;
-    this.trama = Trama.LISO;
+    this.trama = defaultTrama;
     this.colorPrincipal = null;
     this.colorSecundario = null;
   }
 
   public PrendaBuilder conMaterial(Material material) {
+    Guard.notNull(material, "el material no puede ser nulo");
     this.material = material;
     return this;
   }
 
   public PrendaBuilder conTrama(Trama trama) {
+    Guard.notNull(trama, "la Trama no puede ser nulo");
     this.trama = trama;
     return this;
   }
 
   public PrendaBuilder conColorPrincipal(Color color) {
+    Guard.notNull(color, "el color principal no puede ser nulo");
     this.colorPrincipal = color;
     return this;
   }
@@ -51,10 +56,10 @@ public class PrendaBuilder {
   }
 
   private void validarObligatorios() {
-    if (tipo == null) throw new IllegalArgumentException("El tipo de prenda es obligatorio");
-    if (material == null) throw new IllegalArgumentException("El material es obligatorio");
-    if (trama == null) throw new IllegalArgumentException("La trama es obligatoria");
-    if (colorPrincipal == null) throw new IllegalArgumentException("El color principal es obligatorio");
+    Guard.notNull(tipo, "El tipo de prenda es obligatorio");
+    Guard.notNull(material, "El material es obligatorio");
+    Guard.notNull(trama, "La trama es obligatoria");
+    Guard.notNull(colorPrincipal, "El color principal es obligatorio");
   }
 
   public Prenda borrador() {

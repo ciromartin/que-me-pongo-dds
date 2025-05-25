@@ -3,8 +3,8 @@ package quemepongo.v3.domain.domain.prendas.builders;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import quemepongo.v3.domain.prendas.*;
 import quemepongo.v3.domain.prendas.builders.PrendaBuilder;
+import quemepongo.v3.domain.prendas.*;
 
 public class PrendaBuilderTest {
   @Test
@@ -99,6 +99,36 @@ public class PrendaBuilderTest {
     assertEquals(colorSecundario, prenda.getColorSecundario());
     assertEquals(trama, prenda.getTrama());
     assertEquals(material, prenda.getMaterial());
+  }
+
+  @Test
+  void conMaterial_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conMaterial(null)
+    );
+    assertEquals("el material no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conTrama_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conTrama(null)
+    );
+    assertEquals("la Trama no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conColorPrincipal_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conColorPrincipal(null)
+    );
+    assertEquals("el color principal no puede ser nulo", exception.getMessage());
   }
 
   @Test

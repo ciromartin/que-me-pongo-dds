@@ -1,5 +1,6 @@
 package quemepongo.v3.domain.prendas.builders;
 
+import quemepongo.v3.domain.guards.Guard;
 import quemepongo.v3.domain.prendas.*;
 
 public class PrendaBuilder {
@@ -31,16 +32,19 @@ public class PrendaBuilder {
   }
 
   public PrendaBuilder conMaterial(Material material) {
+    Guard.notNull(material, "el material no puede ser nulo");
     this.material = material;
     return this;
   }
 
   public PrendaBuilder conTrama(Trama trama) {
+    Guard.notNull(trama, "la Trama no puede ser nulo");
     this.trama = trama;
     return this;
   }
 
   public PrendaBuilder conColorPrincipal(Color color) {
+    Guard.notNull(color, "el color principal no puede ser nulo");
     this.colorPrincipal = color;
     return this;
   }
@@ -51,10 +55,10 @@ public class PrendaBuilder {
   }
 
   private void validarObligatorios() {
-    if (tipo == null) throw new IllegalArgumentException("El tipo de prenda es obligatorio");
-    if (material == null) throw new IllegalArgumentException("El material es obligatorio");
-    if (trama == null) throw new IllegalArgumentException("La trama es obligatoria");
-    if (colorPrincipal == null) throw new IllegalArgumentException("El color principal es obligatorio");
+    Guard.notNull(tipo, "El tipo de prenda es obligatorio");
+    Guard.notNull(material, "El material es obligatorio");
+    Guard.notNull(trama, "La trama es obligatoria");
+    Guard.notNull(colorPrincipal, "El color principal es obligatorio");
   }
 
   public Prenda borrador() {
