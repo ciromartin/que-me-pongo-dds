@@ -3,7 +3,7 @@ package quemepongo.v3.domain.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import quemepongo.v2.domain.prendas.Material;
+import quemepongo.v3.domain.prendas.Material;
 
 public class MaterialTest {
   @Test

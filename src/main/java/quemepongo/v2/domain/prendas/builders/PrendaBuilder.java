@@ -4,10 +4,10 @@ import quemepongo.v2.domain.prendas.*;
 
 public class PrendaBuilder {
   private TipoPrenda tipo;
+  private Material material;
+  private Trama trama;
   private Color colorPrincipal;
   private Color colorSecundario;
-  private Trama trama;
-  private Material material;
 
   public PrendaBuilder(TipoPrenda tipo) {
     this.clear();
@@ -16,18 +16,28 @@ public class PrendaBuilder {
 
   public PrendaBuilder(Prenda prenda) {
     this.tipo = prenda.getTipo();
+    this.material = prenda.getMaterial();
+    this.trama = prenda.getTrama();
     this.colorPrincipal = prenda.getColorPrincipal();
     this.colorSecundario = prenda.getColorSecundario();
-    this.trama = prenda.getTrama();
-    this.material = prenda.getMaterial();
   }
 
   private void clear() {
     this.tipo = null;
+    this.material = null;
+    this.trama = Trama.LISO;
     this.colorPrincipal = null;
     this.colorSecundario = null;
-    this.trama = Trama.LISO;
-    this.material = null;
+  }
+
+  public PrendaBuilder conMaterial(Material material) {
+    this.material = material;
+    return this;
+  }
+
+  public PrendaBuilder conTrama(Trama trama) {
+    this.trama = trama;
+    return this;
   }
 
   public PrendaBuilder conColorPrincipal(Color color) {
@@ -40,40 +50,31 @@ public class PrendaBuilder {
     return this;
   }
 
-  public PrendaBuilder conTrama(Trama trama) {
-    this.trama = trama;
-    return this;
-  }
-
-  public PrendaBuilder conMaterial(Material material) {
-    this.material = material;
-    return this;
-  }
-
   private void validarObligatorios() {
     if (tipo == null) throw new IllegalArgumentException("El tipo de prenda es obligatorio");
-    if (colorPrincipal == null)
-      throw new IllegalArgumentException("El color principal es obligatorio");
-    if (trama == null) throw new IllegalArgumentException("La trama es obligatoria");
     if (material == null) throw new IllegalArgumentException("El material es obligatorio");
+    if (trama == null) throw new IllegalArgumentException("La trama es obligatoria");
+    if (colorPrincipal == null) throw new IllegalArgumentException("El color principal es obligatorio");
   }
 
   public Prenda borrador() {
     return new Prenda(
         this.tipo,
-        this.colorPrincipal,
-        this.colorSecundario,
+        this.material,
         this.trama,
-        this.material);
+        this.colorPrincipal,
+        this.colorSecundario
+    );
   }
 
   public Prenda build() {
     validarObligatorios();
     return new Prenda(
         this.tipo,
-        this.colorPrincipal,
-        this.colorSecundario,
+        this.material,
         this.trama,
-        this.material);
+        this.colorPrincipal,
+        this.colorSecundario
+    );
   }
 }

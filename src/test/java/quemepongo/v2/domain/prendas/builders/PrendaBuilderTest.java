@@ -1,7 +1,6 @@
 package quemepongo.v2.domain.prendas.builders;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import quemepongo.v2.domain.prendas.*;
@@ -44,7 +43,7 @@ public class PrendaBuilderTest {
     assertEquals(tipo, borrador.getTipo());
     assertEquals(Color.crearBlanco(), borrador.getColorPrincipal());
     assertEquals(defaultTrama, borrador.getTrama());
-    assertEquals(null, borrador.getMaterial());
+    assertNull(borrador.getMaterial());
 
     // Validar que al intentar construir con build lanza excepción
     IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, builder::build);
