@@ -5,8 +5,11 @@ public enum Material {
   LANA("Lana"),
   SEDA("Seda"),
   POLIESTER("Poliester"),
+  TELA("Tela"),
   CUERO("Cuero"),
-  JEAN("Jean");
+  JEAN("Jean"),
+  PIQUE("Pique"),
+  ACETATO("Acetato");
 
   private final String nombre;
 

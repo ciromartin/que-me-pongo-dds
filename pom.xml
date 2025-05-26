@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
+      <artifactId>junit-jupiter</artifactId>
       <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
@@ -27,6 +27,11 @@
       <artifactId>mockito-core</artifactId>
       <version>5.2.0</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.4.8-jre</version>
     </dependency>
   </dependencies>
 
@@ -45,6 +50,8 @@
           <configLocation>google_checks.xml</configLocation>
           <violationSeverity>warning</violationSeverity>
           <violationIgnore>
+            LineLength,
+            AvoidStarImport,
             NeedBraces,
             MissingJavadocMethod,
             MissingJavadocPackage,

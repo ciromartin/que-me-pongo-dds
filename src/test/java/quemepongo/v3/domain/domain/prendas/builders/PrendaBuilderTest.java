@@ -1,33 +1,28 @@
 package quemepongo.v3.domain.domain.prendas.builders;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import quemepongo.v2.domain.prendas.*;
-import quemepongo.v2.domain.prendas.builders.PrendaBuilder;
+import quemepongo.v3.domain.prendas.builders.PrendaBuilder;
+import quemepongo.v3.domain.prendas.*;
 
 public class PrendaBuilderTest {
   @Test
   void build_cuandoTieneTodosLosCamposObligatorios_deberiaCrearPrenda() {
     TipoPrenda tipo = TipoPrenda.CAMISA;
-    Categoria categoria  = Categoria.SUPERIOR;
-    Color colorPrincipal = Color.crearNegro();
-    Trama trama = Trama.LISO;
+    Categoria categoria  = tipo.getCategoria();
     Material material = Material.ALGODON;
+    Color colorPrincipal = Color.crearNegro();
 
-    PrendaBuilder builder = new PrendaBuilder(tipo)
+    Prenda prenda = new PrendaBuilder(tipo)
+        .conMaterial(material)
         .conColorPrincipal(colorPrincipal)
-        .conTrama(trama)
-        .conMaterial(material);
-
-    Prenda prenda = builder.build();
+        .build();
 
     assertEquals(tipo, prenda.getTipo());
+    assertEquals(material, prenda.getMaterial());
     assertEquals(categoria, prenda.getCategoria());
     assertEquals(colorPrincipal, prenda.getColorPrincipal());
-    assertEquals(trama, prenda.getTrama());
-    assertEquals(material, prenda.getMaterial());
   }
 
   @Test
@@ -45,7 +40,7 @@ public class PrendaBuilderTest {
     assertEquals(tipo, borrador.getTipo());
     assertEquals(Color.crearBlanco(), borrador.getColorPrincipal());
     assertEquals(defaultTrama, borrador.getTrama());
-    assertEquals(null, borrador.getMaterial());
+    assertNull(borrador.getMaterial());
 
     // Validar que al intentar construir con build lanza excepción
     IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, builder::build);
@@ -103,6 +98,46 @@ public class PrendaBuilderTest {
   }
 
   @Test
+  void conMaterial_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conMaterial(null)
+    );
+    assertEquals("el material no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conTrama_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conTrama(null)
+    );
+    assertEquals("la Trama no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conColorPrincipal_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conColorPrincipal(null)
+    );
+    assertEquals("el color principal no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conFormalidad_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conFormalidad(null)
+    );
+    assertEquals("la formalidad no puede ser nula", exception.getMessage());
+  }
+
+  @Test
   void build_cuandoFaltaTipo_deberiaLanzarExcepcion() {
     PrendaBuilder builder = new PrendaBuilder((TipoPrenda) null)
         .conColorPrincipal(Color.crearBlanco())
@@ -148,6 +183,22 @@ public class PrendaBuilderTest {
     Prenda prenda = builder.build();
 
     assertEquals(defaultTrama, prenda.getTrama());
+  }
+
+  @Test
+  void build_cuandoNoSeEspecificaFormalidad_deberiaAsignarFormalidadNeutroPorDefecto() {
+    TipoPrenda tipo = TipoPrenda.CAMISA;
+    Color colorPrincipal = Color.crearBlanco();
+    Material material = Material.ALGODON;
+    Formalidad defaultFormalidad = Formalidad.NEUTRO;
+
+    PrendaBuilder builder = new PrendaBuilder(tipo)
+        .conColorPrincipal(colorPrincipal)
+        .conMaterial(material);
+
+    Prenda prenda = builder.build();
+
+    assertEquals(defaultFormalidad, prenda.getFormalidad());
   }
 
 }

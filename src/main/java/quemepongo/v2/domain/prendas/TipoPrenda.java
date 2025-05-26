@@ -2,6 +2,7 @@ package quemepongo.v2.domain.prendas;
 
 public enum TipoPrenda {
   CAMISA(Categoria.SUPERIOR),
+  CHOMBA(Categoria.SUPERIOR),
   PANTALON(Categoria.INFERIOR),
   ZAPATO(Categoria.CALZADO),
   ANTEOJOS(Categoria.ACCESORIO);
@@ -15,6 +16,5 @@ public enum TipoPrenda {
   public Categoria getCategoria() {
     return categoria;
   }
-
 
 }

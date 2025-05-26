@@ -1,7 +1,6 @@
 package quemepongo.v2.domain.prendas.builders;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import quemepongo.v2.domain.prendas.*;
@@ -44,7 +43,7 @@ public class PrendaBuilderTest {
     assertEquals(tipo, borrador.getTipo());
     assertEquals(Color.crearBlanco(), borrador.getColorPrincipal());
     assertEquals(defaultTrama, borrador.getTrama());
-    assertEquals(null, borrador.getMaterial());
+    assertNull(borrador.getMaterial());
 
     // Validar que al intentar construir con build lanza excepción
     IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, builder::build);
@@ -99,6 +98,36 @@ public class PrendaBuilderTest {
     assertEquals(colorSecundario, prenda.getColorSecundario());
     assertEquals(trama, prenda.getTrama());
     assertEquals(material, prenda.getMaterial());
+  }
+
+  @Test
+  void conMaterial_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conMaterial(null)
+    );
+    assertEquals("el material no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conTrama_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conTrama(null)
+    );
+    assertEquals("la Trama no puede ser nulo", exception.getMessage());
+  }
+
+  @Test
+  void conColorPrincipal_cuandoEsNulo_deberiaLanzarExcepcion() {
+    PrendaBuilder builder = new PrendaBuilder(TipoPrenda.CAMISA);
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> builder.conColorPrincipal(null)
+    );
+    assertEquals("el color principal no puede ser nulo", exception.getMessage());
   }
 
   @Test

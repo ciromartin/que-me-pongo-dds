@@ -1,22 +1,25 @@
 package quemepongo.v3.domain.prendas;
 
 public class Prenda {
-  private TipoPrenda tipo;
-  private Color colorPrincipal;
-  private Color colorSecundario;
-  private Trama trama;
-  private Material material;
+  private final TipoPrenda tipo;
+  private final Material material;
+  private final Trama trama;
+  private final Formalidad formalidad;
+  private final Color colorPrincipal;
+  private final Color colorSecundario;
 
   public Prenda(TipoPrenda tipo,
-                Color colorPrincipal,
-                Color colorSecundario,
+                Material material,
                 Trama trama,
-                Material material) {
+                Formalidad formalidad,
+                Color colorPrincipal,
+                Color colorSecundario) {
     this.tipo = tipo;
+    this.material = material;
+    this.trama = trama;
+    this.formalidad = formalidad;
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
-    this.trama = trama;
-    this.material = material;
   }
 
   public TipoPrenda getTipo() {
@@ -27,19 +30,39 @@ public class Prenda {
     return tipo.getCategoria();
   }
 
-  public Color getColorPrincipal() {
-    return colorPrincipal;
+  public boolean esSuperior() {
+    return tipo.esSuperior();
   }
 
-  public Color getColorSecundario() {
-    return colorSecundario;
+  public boolean esInferior() {
+    return tipo.esInferior();
+  }
+
+  public boolean esCalzado() {
+    return tipo.esCalzado();
+  }
+
+  public Material getMaterial() {
+    return material;
   }
 
   public Trama getTrama() {
     return trama;
   }
 
-  public Material getMaterial() {
-    return material;
+  public boolean esInformal() {
+    return formalidad == Formalidad.INFORMAL;
+  }
+
+  public Formalidad getFormalidad() {
+    return formalidad;
+  }
+
+  public Color getColorPrincipal() {
+    return colorPrincipal;
+  }
+
+  public Color getColorSecundario() {
+    return colorSecundario;
   }
 }
