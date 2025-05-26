@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import quemepongo.v3.domain.prendas.*;
 import quemepongo.v3.domain.sastres.SastreSanJuan;
-import quemepongo.v3.domain.uniformes.Uniforme;
+import quemepongo.v3.domain.atuendos.Atuendo;
 
 public class SastreSanJuanTest {
   @Test
   void testFabricarParteSuperior() {
     SastreSanJuan sastre = new SastreSanJuan();
-    Uniforme uniforme = sastre.fabricarUniforme();
+    Atuendo uniforme = sastre.fabricarAtuendo();
 
     assertEquals(TipoPrenda.CHOMBA, uniforme.getPrendaSuperior().getTipo());
     assertEquals(Material.PIQUE, uniforme.getPrendaSuperior().getMaterial());

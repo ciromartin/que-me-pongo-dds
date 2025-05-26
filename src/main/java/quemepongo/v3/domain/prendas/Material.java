@@ -5,6 +5,7 @@ public enum Material {
   LANA("Lana"),
   SEDA("Seda"),
   POLIESTER("Poliester"),
+  TELA("Tela"),
   CUERO("Cuero"),
   JEAN("Jean"),
   PIQUE("Pique"),

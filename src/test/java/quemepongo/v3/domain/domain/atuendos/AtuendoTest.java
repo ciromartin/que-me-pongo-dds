@@ -1,18 +1,19 @@
-package quemepongo.v3.domain.domain.uniformes;
+package quemepongo.v3.domain.domain.atuendos;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import quemepongo.v3.domain.prendas.*;
 import quemepongo.v3.domain.prendas.builders.PrendaBuilder;
-import quemepongo.v3.domain.uniformes.Uniforme;
+import quemepongo.v3.domain.atuendos.Atuendo;
 
 
-public class UniformeTest {
+public class AtuendoTest {
   static Stream<Arguments> provideInvalidUniformes() {
     return Stream.of(
         Arguments.of(null,
@@ -104,11 +105,36 @@ public class UniformeTest {
 
   @ParameterizedTest
   @MethodSource("provideInvalidUniformes")
-  void testInvalidUniformes(Prenda prendaSuperior, Prenda prendaInferior, Prenda prendaCalzado, String expectedMessage) {
+  void constructor_cuandoUniformeInvalido_entoncesLanzaExcepcion(Prenda prendaSuperior, Prenda prendaInferior, Prenda prendaCalzado, String expectedMessage) {
     Exception exception = assertThrows(IllegalArgumentException.class, () ->
-        new Uniforme(prendaSuperior, prendaInferior, prendaCalzado)
+        new Atuendo(prendaSuperior, prendaInferior, prendaCalzado)
     );
 
     assertEquals(expectedMessage, exception.getMessage());
+  }
+
+  @Test
+  void getters_cuandoUniformeValido_entoncesDevuelvePrendasCorrectas() {
+    Prenda prendaSuperior = new PrendaBuilder(TipoPrenda.CAMISA)
+        .conMaterial(Material.ALGODON)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearBlanco())
+        .build();
+    Prenda prendaInferior = new PrendaBuilder(TipoPrenda.PANTALON)
+        .conMaterial(Material.ALGODON)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearNegro())
+        .build();
+    Prenda calzado = new PrendaBuilder(TipoPrenda.ZAPATO)
+        .conMaterial(Material.CUERO)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearNegro())
+        .build();
+
+    Atuendo uniforme = new Atuendo(prendaSuperior, prendaInferior, calzado);
+
+    assertEquals(prendaSuperior, uniforme.getPrendaSuperior());
+    assertEquals(prendaInferior, uniforme.getPrendaInferior());
+    assertEquals(calzado, uniforme.getPrendaCalzado());
   }
 }

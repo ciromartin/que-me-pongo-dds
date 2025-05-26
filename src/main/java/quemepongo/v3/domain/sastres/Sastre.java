@@ -1,11 +1,11 @@
 package quemepongo.v3.domain.sastres;
 
 import quemepongo.v3.domain.prendas.Prenda;
-import quemepongo.v3.domain.uniformes.Uniforme;
+import quemepongo.v3.domain.atuendos.Atuendo;
 
 public abstract class Sastre {
-  public Uniforme fabricarUniforme() {
-    return new Uniforme(
+  public Atuendo fabricarAtuendo() {
+    return new Atuendo(
         this.fabricarParteSuperior(),
         this.fabricarParteInferior(),
         this.fabricarCalzado()

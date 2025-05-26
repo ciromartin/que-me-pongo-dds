@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import quemepongo.v2.domain.prendas.*;
@@ -102,11 +103,36 @@ public class UniformeTest {
 
   @ParameterizedTest
   @MethodSource("provideInvalidUniformes")
-  void testInvalidUniformes(Prenda prendaSuperior, Prenda prendaInferior, Prenda prendaCalzado, String expectedMessage) {
+  void constructor_cuandoUniformeInvalido_entoncesLanzaExcepcion(Prenda prendaSuperior, Prenda prendaInferior, Prenda prendaCalzado, String expectedMessage) {
     Exception exception = assertThrows(IllegalArgumentException.class, () ->
         new Uniforme(prendaSuperior, prendaInferior, prendaCalzado)
     );
 
     assertEquals(expectedMessage, exception.getMessage());
+  }
+
+  @Test
+  void getters_cuandoUniformeValido_entoncesDevuelvePrendasCorrectas() {
+    Prenda prendaSuperior = new PrendaBuilder(TipoPrenda.CAMISA)
+        .conMaterial(Material.ALGODON)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearBlanco())
+        .build();
+    Prenda prendaInferior = new PrendaBuilder(TipoPrenda.PANTALON)
+        .conMaterial(Material.ALGODON)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearNegro())
+        .build();
+    Prenda calzado = new PrendaBuilder(TipoPrenda.ZAPATO)
+        .conMaterial(Material.CUERO)
+        .conTrama(Trama.LISO)
+        .conColorPrincipal(Color.crearNegro())
+        .build();
+
+    Uniforme uniforme = new Uniforme(prendaSuperior, prendaInferior, calzado);
+
+    assertEquals(prendaSuperior, uniforme.getPrendaSuperior());
+    assertEquals(prendaInferior, uniforme.getPrendaInferior());
+    assertEquals(calzado, uniforme.getPrendaCalzado());
   }
 }

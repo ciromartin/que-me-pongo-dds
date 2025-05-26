@@ -17,5 +17,4 @@ public enum TipoPrenda {
     return categoria;
   }
 
-
 }

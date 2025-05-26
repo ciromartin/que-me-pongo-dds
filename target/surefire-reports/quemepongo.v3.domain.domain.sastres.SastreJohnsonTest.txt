@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: quemepongo.v3.domain.domain.sastres.SastreJohnsonTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in quemepongo.v3.domain.domain.sastres.SastreJohnsonTest
