@@ -1,4 +1,4 @@
-package quemepongo.v3.domain.domain.prendas.builders;
+package quemepongo.v3.domain.prendas.builders;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package quemepongo.v3.domain.domain.sastres;
+package quemepongo.v3.domain.sastres;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package quemepongo.v3.domain.domain.guards;
+package quemepongo.v3.domain.guards;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

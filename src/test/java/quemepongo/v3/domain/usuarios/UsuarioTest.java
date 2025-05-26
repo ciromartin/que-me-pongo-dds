@@ -1,4 +1,4 @@
-package quemepongo.v3.domain.domain.usuarios;
+package quemepongo.v3.domain.usuarios;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

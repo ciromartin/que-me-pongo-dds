@@ -1,4 +1,4 @@
-package quemepongo.v3.domain.domain.atuendos;
+package quemepongo.v3.domain.atuendos;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
