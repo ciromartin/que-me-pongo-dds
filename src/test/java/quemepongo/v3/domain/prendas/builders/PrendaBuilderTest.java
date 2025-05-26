@@ -201,4 +201,21 @@ public class PrendaBuilderTest {
     assertEquals(defaultFormalidad, prenda.getFormalidad());
   }
 
+    @Test
+  void build_cuandoSeEspecificaFormalidad_deberiaSetearFormalidad() {
+    TipoPrenda tipo = TipoPrenda.CAMISA;
+    Color colorPrincipal = Color.crearBlanco();
+    Material material = Material.ALGODON;
+    Formalidad formalidad = Formalidad.FORMAL;
+
+    PrendaBuilder builder = new PrendaBuilder(tipo)
+        .conColorPrincipal(colorPrincipal)
+        .conMaterial(material)
+        .conFormalidad(formalidad);
+
+    Prenda prenda = builder.build();
+
+    assertEquals(formalidad, prenda.getFormalidad());
+  }
+
 }

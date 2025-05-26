@@ -1,9 +1,8 @@
-package quemepongo.v3.domain;
+package quemepongo.v3.domain.prendas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import quemepongo.v3.domain.prendas.Material;
 
 public class MaterialTest {
   @Test

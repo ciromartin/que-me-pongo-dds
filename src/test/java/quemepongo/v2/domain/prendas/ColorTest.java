@@ -1,10 +1,9 @@
-package quemepongo.v2.domain;
+package quemepongo.v2.domain.prendas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import quemepongo.v2.domain.prendas.Color;
 
 public class ColorTest {
   @Test
