@@ -54,7 +54,9 @@ public class Prenda {
     return formalidad == Formalidad.INFORMAL;
   }
 
-  public Formalidad getFormalidad() { return formalidad; }
+  public Formalidad getFormalidad() {
+    return formalidad;
+  }
 
   public Color getColorPrincipal() {
     return colorPrincipal;

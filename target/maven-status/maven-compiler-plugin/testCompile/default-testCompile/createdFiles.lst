@@ -1,7 +1,10 @@
 quemepongo/v2/domain/ColorTest.class
 quemepongo/v2/domain/sastres/SastreSanJuanTest.class
+quemepongo/v3/domain/domain/sugerencias/MotorSugerenciaBasicoTest.class
 quemepongo/v3/domain/domain/TipoPrendaTest.class
+quemepongo/v3/domain/domain/sugerencias/MotorSugerenciaTest.class
 quemepongo/v3/domain/domain/sastres/SastreJohnsonTest.class
+quemepongo/v3/domain/domain/usuarios/UsuarioTest.class
 quemepongo/v3/domain/domain/MaterialTest.class
 quemepongo/v3/domain/domain/ColorTest.class
 quemepongo/v2/domain/uniformes/UniformeTest.class
@@ -13,4 +16,5 @@ quemepongo/v2/domain/prendas/builders/PrendaBuilderTest.class
 quemepongo/v2/domain/TipoPrendaTest.class
 quemepongo/v3/domain/domain/guards/GuardTest.class
 quemepongo/v2/domain/guards/GuardTest.class
+quemepongo/v3/domain/domain/sugerencias/MotorSugerenciaFormalidadTest.class
 quemepongo/v3/domain/domain/sastres/SastreSanJuanTest.class

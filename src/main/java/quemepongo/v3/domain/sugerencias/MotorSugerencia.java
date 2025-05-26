@@ -14,23 +14,23 @@ public abstract class MotorSugerencia {
 
   private Set<Prenda> getPrendasSuperiores(List<Prenda> prendas) {
     return prendas.stream()
-                  .filter(Prenda::esSuperior)
-                  .collect(Collectors.toSet());
+        .filter(Prenda::esSuperior)
+        .collect(Collectors.toSet());
   }
 
   private Set<Prenda> getPrendasInferiores(List<Prenda> prendas) {
     return prendas.stream()
-                  .filter(Prenda::esInferior)
-                  .collect(Collectors.toSet());
+        .filter(Prenda::esInferior)
+        .collect(Collectors.toSet());
   }
 
   private Set<Prenda> getCalzados(List<Prenda> prendas) {
     return prendas.stream()
-                  .filter(Prenda::esCalzado)
-                  .collect(Collectors.toSet());
+        .filter(Prenda::esCalzado)
+        .collect(Collectors.toSet());
   }
 
-  public Atuendo sugerirAtuendo(Usuario usuario){
+  public Atuendo sugerirAtuendo(Usuario usuario) {
     List<Prenda> prendas = validarPrendasDe(usuario);
 
     Set<Prenda> prendasSuperiores = getPrendasSuperiores(prendas);
@@ -54,19 +54,19 @@ public abstract class MotorSugerencia {
   }
 
   private void validarAtuendoValido(Set<Prenda> prendasSuperiores,
-                                   Set<Prenda> prendasInferiores,
-                                   Set<Prenda> calzados) {
-      if (prendasSuperiores.isEmpty()) {
-        throw new IllegalStateException("Se necesita al menos una prenda superior para sugerir un atuendo.");
-      }
+                                    Set<Prenda> prendasInferiores,
+                                    Set<Prenda> calzados) {
+    if (prendasSuperiores.isEmpty()) {
+      throw new IllegalStateException("Se necesita al menos una prenda superior para sugerir un atuendo.");
+    }
 
-      if (prendasInferiores.isEmpty()) {
-        throw new IllegalStateException("Se necesita al menos una prenda inferior para sugerir un atuendo.");
-      }
+    if (prendasInferiores.isEmpty()) {
+      throw new IllegalStateException("Se necesita al menos una prenda inferior para sugerir un atuendo.");
+    }
 
-      if (calzados.isEmpty()) {
-        throw new IllegalStateException("Se necesita al menos un calzado para sugerir un atuendo.");
-      }
+    if (calzados.isEmpty()) {
+      throw new IllegalStateException("Se necesita al menos un calzado para sugerir un atuendo.");
+    }
   }
 
   public abstract List<Prenda> validarPrendasDe(Usuario usuario);

@@ -12,7 +12,7 @@ public class Usuario {
 
   public Usuario(int edad, List<Prenda> prendas, MotorSugerencia motorSugerencia) {
     this.edad = edad;
-    this.prendas = prendas;
+    this.prendas = List.copyOf(prendas);
     this.motorSugerencia = motorSugerencia;
   }
 
@@ -21,7 +21,7 @@ public class Usuario {
   }
 
   public List<Prenda> getPrendas() {
-    return prendas;
+    return List.copyOf(prendas);
   }
 
   public Atuendo sugerirAtuendo() {
