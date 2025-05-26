@@ -30,7 +30,7 @@ public abstract class MotorSugerencia {
         .collect(Collectors.toSet());
   }
 
-  public Atuendo sugerirAtuendo(Usuario usuario) {
+  private List<List<Prenda>> generarCombinacionesDeAtuendos(Usuario usuario) {
     List<Prenda> prendas = validarPrendasDe(usuario);
 
     Set<Prenda> prendasSuperiores = getPrendasSuperiores(prendas);
@@ -39,10 +39,11 @@ public abstract class MotorSugerencia {
 
     validarAtuendoValido(prendasSuperiores, prendasInferiores, calzados);
 
-    // Generar todas las combinaciones posibles
-    List<List<Prenda>> combinaciones = new ArrayList<>(
-        Sets.cartesianProduct(prendasSuperiores, prendasInferiores, calzados)
-    );
+    return new ArrayList<>(Sets.cartesianProduct(prendasSuperiores, prendasInferiores, calzados));
+  }
+
+  public Atuendo sugerirAtuendo(Usuario usuario) {
+    List<List<Prenda>> combinaciones = generarCombinacionesDeAtuendos(usuario);
 
     // Mezclar las combinaciones
     Collections.shuffle(combinaciones);
@@ -51,6 +52,15 @@ public abstract class MotorSugerencia {
     List<Prenda> combinacionAleatoria = combinaciones.get(0);
 
     return new Atuendo(combinacionAleatoria.get(0), combinacionAleatoria.get(1), combinacionAleatoria.get(2));
+  }
+
+  public List<Atuendo> sugerirAtuendos(Usuario usuario) {
+    List<List<Prenda>> combinaciones = generarCombinacionesDeAtuendos(usuario);
+
+    // Convertir cada combinación en un Atuendo
+    return combinaciones.stream()
+        .map(combinacion -> new Atuendo(combinacion.get(0), combinacion.get(1), combinacion.get(2)))
+        .toList();
   }
 
   private void validarAtuendoValido(Set<Prenda> prendasSuperiores,

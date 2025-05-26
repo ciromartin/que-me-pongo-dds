@@ -1,7 +1,6 @@
 package quemepongo.v3.domain.domain.sugerencias;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -99,6 +98,56 @@ public class MotorSugerenciaTest {
     Atuendo atuendo = motorSugerencia.sugerirAtuendo(usuario);
 
     assertNotNull(atuendo);
+  }
+
+  @Test
+  void sugerirAtuendos_cuandoHayPrendasValidas_deberiaDevolverTodasLasCombinaciones() {
+    List<Prenda> prendasSuperiores = List.of(
+        new PrendaBuilder(TipoPrenda.CAMISA)
+            .conMaterial(Material.ALGODON)
+            .conColorPrincipal(Color.crearBlanco())
+            .build(),
+        new PrendaBuilder(TipoPrenda.REMERA)
+            .conMaterial(Material.ALGODON)
+            .conColorPrincipal(Color.crearRojo())
+            .build()
+    );
+
+    List<Prenda> prendasInferiores = List.of(
+        new PrendaBuilder(TipoPrenda.PANTALON)
+            .conMaterial(Material.JEAN)
+            .conColorPrincipal(Color.crearAzul())
+            .build(),
+        new PrendaBuilder(TipoPrenda.SHORT)
+            .conMaterial(Material.ALGODON)
+            .conColorPrincipal(Color.crearNegro())
+            .build()
+    );
+
+    List<Prenda> calzados = List.of(
+        new PrendaBuilder(TipoPrenda.ZAPATO)
+            .conMaterial(Material.CUERO)
+            .conColorPrincipal(Color.crearNegro())
+            .build(),
+        new PrendaBuilder(TipoPrenda.ZAPATILLA)
+            .conMaterial(Material.TELA)
+            .conColorPrincipal(Color.crearBlanco())
+            .build()
+    );
+
+    List<Prenda> todasLasPrendas = Stream.concat(
+        Stream.concat(prendasSuperiores.stream(), prendasInferiores.stream()),
+        calzados.stream()
+    ).toList();
+
+    usuario = new Usuario(30, todasLasPrendas, motorSugerencia);
+
+    List<Atuendo> atuendos = motorSugerencia.sugerirAtuendos(usuario);
+
+
+    int combinacionesEsperadas = prendasSuperiores.size() * prendasInferiores.size() * calzados.size();
+    assertNotNull(atuendos);
+    assertEquals(combinacionesEsperadas, atuendos.size());
   }
 
   @Test

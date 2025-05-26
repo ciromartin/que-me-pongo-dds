@@ -28,6 +28,10 @@ public class Usuario {
     return motorSugerencia.sugerirAtuendo(this);
   }
 
+  public List<Atuendo> sugerirAtuendos() {
+    return motorSugerencia.sugerirAtuendos(this);
+  }
+
   public boolean esEdadAvanzada() {
     return edad >= 56;
   }
