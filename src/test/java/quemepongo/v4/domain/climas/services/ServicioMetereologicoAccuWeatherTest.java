@@ -33,7 +33,7 @@ class ServicioMetereologicoAccuWeatherTest {
 
     assertEquals(1, condiciones.size());
     assertEquals("Buenos Aires", condiciones.get(0).getCiudad());
-    assertEquals("25", condiciones.get(0).getTemperatura());
+    assertEquals(25, condiciones.get(0).getTemperatura());
     assertEquals("C", condiciones.get(0).getUnidadTemperatura());
     assertEquals("Clear", condiciones.get(0).getDescripcion());
     verify(apiMock, times(1)).getWeather(CIUDAD);

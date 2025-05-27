@@ -11,7 +11,7 @@ public class CondicionClimaticaTest {
 
     assertEquals("Buenos Aires", condicion.getCiudad());
     assertEquals("Clear", condicion.getDescripcion());
-    assertEquals("25", condicion.getTemperatura());
+    assertEquals(25, condicion.getTemperatura());
     assertEquals("C", condicion.getUnidadTemperatura());
   }
 

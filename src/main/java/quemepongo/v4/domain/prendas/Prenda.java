@@ -5,6 +5,7 @@ public class Prenda {
   private final Material material;
   private final Trama trama;
   private final Formalidad formalidad;
+  private final Integer temperaturaMaxima;
   private final Color colorPrincipal;
   private final Color colorSecundario;
 
@@ -12,12 +13,14 @@ public class Prenda {
                 Material material,
                 Trama trama,
                 Formalidad formalidad,
+                Integer temperaturaMaxima,
                 Color colorPrincipal,
                 Color colorSecundario) {
     this.tipo = tipo;
     this.material = material;
     this.trama = trama;
     this.formalidad = formalidad;
+    this.temperaturaMaxima = temperaturaMaxima;
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
   }
@@ -58,11 +61,17 @@ public class Prenda {
     return formalidad;
   }
 
+  public Integer getTemperaturaMaxima() {return temperaturaMaxima; }
+
   public Color getColorPrincipal() {
     return colorPrincipal;
   }
 
   public Color getColorSecundario() {
     return colorSecundario;
+  }
+
+  public boolean esApropiadoParaClima(Integer temperatura) {
+    return temperatura <= this.temperaturaMaxima;
   }
 }

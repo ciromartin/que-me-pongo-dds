@@ -16,6 +16,9 @@ public class ServicioMetereologicoAccuWeather implements ServicioMetereologico {
   @Override
   public List<CondicionClimatica> obtenerCondicionesClimaticas(String ciudad) {
     List<Map<String, Object>> datosClimaticos = this.api.getWeather(ciudad);
+    if (datosClimaticos.isEmpty()) {
+      throw new IllegalArgumentException("No se encontraron condiciones climáticas para la ciudad: " + ciudad);
+    }
     return RespuestaAccuWeather.mapearACondicionesClimaticas(ciudad, datosClimaticos);
   }
 }

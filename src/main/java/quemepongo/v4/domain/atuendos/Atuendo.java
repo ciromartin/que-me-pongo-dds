@@ -42,4 +42,10 @@ public class Atuendo {
   public Prenda getPrendaCalzado() {
     return prendaCalzado;
   }
+
+  public boolean esApropiadoParaClima(Integer temperatura) {
+    return this.prendaSuperior.esApropiadoParaClima(temperatura)
+        && this.prendaInferior.esApropiadoParaClima(temperatura)
+        && this.prendaCalzado.esApropiadoParaClima(temperatura);
+  }
 }

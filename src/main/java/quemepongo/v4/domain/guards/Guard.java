@@ -7,4 +7,12 @@ public class Guard {
     }
     return atributo;
   }
+
+  public static Integer validInteger(String valor, String mensaje) {
+    try {
+      return Integer.parseInt(valor);
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException(mensaje);
+    }
+  }
 }

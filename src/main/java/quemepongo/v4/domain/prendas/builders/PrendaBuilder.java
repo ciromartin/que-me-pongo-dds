@@ -6,11 +6,13 @@ import quemepongo.v4.domain.prendas.*;
 public class PrendaBuilder {
   private final Trama defaultTrama = Trama.LISO;
   private final Formalidad defaultFormalidad = Formalidad.NEUTRO;
+  private final Integer defaultTemperaturaMaxima = 25;
 
   private TipoPrenda tipo;
   private Material material;
   private Trama trama = defaultTrama;
   private Formalidad formalidad = defaultFormalidad;
+  private Integer temperaturaMaxima = defaultTemperaturaMaxima;
   private Color colorPrincipal;
   private Color colorSecundario;
 
@@ -23,6 +25,8 @@ public class PrendaBuilder {
     this.tipo = prenda.getTipo();
     this.material = prenda.getMaterial();
     this.trama = prenda.getTrama();
+    this.formalidad = prenda.getFormalidad();
+    this.temperaturaMaxima = prenda.getTemperaturaMaxima();
     this.colorPrincipal = prenda.getColorPrincipal();
     this.colorSecundario = prenda.getColorSecundario();
   }
@@ -32,6 +36,7 @@ public class PrendaBuilder {
     this.material = null;
     this.trama = defaultTrama;
     this.formalidad = defaultFormalidad;
+    this.temperaturaMaxima = defaultTemperaturaMaxima;
     this.colorPrincipal = null;
     this.colorSecundario = null;
   }
@@ -51,6 +56,12 @@ public class PrendaBuilder {
   public PrendaBuilder conFormalidad(Formalidad formalidad) {
     Guard.notNull(formalidad, "la formalidad no puede ser nula");
     this.formalidad = formalidad;
+    return this;
+  }
+
+  public PrendaBuilder conTemperaturaMaxima(Integer temperaturaMaxima) {
+    Guard.notNull(temperaturaMaxima, "la temperatura máxima no puede ser nula");
+    this.temperaturaMaxima = temperaturaMaxima;
     return this;
   }
 
@@ -79,6 +90,7 @@ public class PrendaBuilder {
         this.material,
         this.trama,
         this.formalidad,
+        this.temperaturaMaxima,
         this.colorPrincipal,
         this.colorSecundario
     );
@@ -91,6 +103,7 @@ public class PrendaBuilder {
         this.material,
         this.trama,
         this.formalidad,
+        this.temperaturaMaxima,
         this.colorPrincipal,
         this.colorSecundario
     );
