@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: quemepongo.v2.domain.prendas.builders.PrendaBuilderTest
--------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in quemepongo.v2.domain.prendas.builders.PrendaBuilderTest
