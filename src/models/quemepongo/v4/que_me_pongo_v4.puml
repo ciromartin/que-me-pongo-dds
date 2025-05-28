@@ -5,6 +5,9 @@ class Prenda {
     +colorSecundario: Color
     +trama: Trama
     +material: Material
+    +formalidad: Formalidad
+    +temperaturaMaxima: Integer
+    +esApropiadoParaClima(temperatura: Integer): boolean
 }
 
 class PrendaBuilder {
@@ -14,6 +17,8 @@ class PrendaBuilder {
     +conColorSecundario(Color color): PrendaBuilder
     +conTrama(Trama trama): PrendaBuilder
     +conMaterial(Material material): PrendaBuilder
+    +conFormalidad(Formalidad formalidad): PrendaBuilder
+    +conTemperaturaMaxima(Integer temperaturaMaxima): PrendaBuilder
     +borrador(): Prenda
     +build(): Prenda
 }
@@ -62,11 +67,7 @@ class Color {
     -azul: int
 }
 
-class Atuendo {
-    +prendaSuperior: Prenda
-    +prendaInferior: Prenda
-    +prendaCalzado: Prenda
-}
+
 
 class Guard {
     +notNull(T atributo, String mensaje): T
@@ -110,6 +111,13 @@ class MotorSugerenciaFormalidad {
 
 class MotorSugerenciaBasico {
     +validarPrendasDe(Usuario usuario): List<Prenda>
+}
+
+class Atuendo {
+    +prendaSuperior: Prenda
+    +prendaInferior: Prenda
+    +prendaCalzado: Prenda
+    +esApropiadoParaClima(temperatura: Integer): boolean
 }
 
 class Usuario {
