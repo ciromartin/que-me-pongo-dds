@@ -23,9 +23,10 @@ public class AsesorImagen implements Asesor {
   public Atuendo sugerirAtuendo(String ciudad) {
     List<CondicionClimatica> condicionesClimaticas = servicioMetereologico.obtenerCondicionesClimaticas(ciudad);
     validarCondicionesClimaticas(condicionesClimaticas);
+    CondicionClimatica condicionClimatica = condicionesClimaticas.get(0);
     List<Atuendo> atuendos = this.motorSugerencia.sugerirAtuendos(usuario);
     validarAtuendosDisponibles(atuendos);
-    atuendos = filtrarAtuendosApropiadosParaClima(atuendos, condicionesClimaticas.get(0));
+    atuendos = filtrarAtuendosApropiadosParaClima(atuendos, condicionClimatica);
     validarAtuendosApropiados(atuendos);
     return atuendos.get(0);
   }

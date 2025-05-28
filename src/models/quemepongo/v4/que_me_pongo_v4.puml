@@ -1,0 +1,212 @@
+@startuml
+class Prenda {
+    +tipo: TipoPrenda
+    +colorPrincipal: Color
+    +colorSecundario: Color
+    +trama: Trama
+    +material: Material
+}
+
+class PrendaBuilder {
+    +PrendaBuilder(TipoPrenda tipo)
+    +PrendaBuilder(Prenda prenda)
+    +conColorPrincipal(Color color): PrendaBuilder
+    +conColorSecundario(Color color): PrendaBuilder
+    +conTrama(Trama trama): PrendaBuilder
+    +conMaterial(Material material): PrendaBuilder
+    +borrador(): Prenda
+    +build(): Prenda
+}
+
+enum Categoria {
+    SUPERIOR
+    INFERIOR
+    CALZADO
+    ACCESORIO
+}
+
+enum TipoPrenda {
+    REMERA
+    CAMISA
+    CHOMBA
+    PANTALON
+    SHORT
+    ZAPATO
+    ZAPATILLA
+    ANTEOJOS
+}
+
+enum Trama {
+    LISO
+    RAYADO
+    LUNARES
+    CUADROS
+    ESTAMPADO
+}
+
+enum Material {
+    ALGODON
+    LANA
+    SEDA
+    POLIESTER
+    TELA
+    CUERO
+    JEAN
+    PIQUE
+    ACETATO
+}
+
+class Color {
+    -rojo: int
+    -verde: int
+    -azul: int
+}
+
+class Atuendo {
+    +prendaSuperior: Prenda
+    +prendaInferior: Prenda
+    +prendaCalzado: Prenda
+}
+
+class Guard {
+    +notNull(T atributo, String mensaje): T
+    +validInteger(String valor, String mensaje): Integer
+}
+
+enum Formalidad {
+    FORMAL
+    INFORMAL
+    NEUTRO
+}
+
+abstract class Sastre {
+    +fabricarAtuendo(): Atuendo
+    #fabricarParteSuperior(): Prenda
+    #fabricarParteInferior(): Prenda
+    #fabricarCalzado(): Prenda
+}
+
+class SastreSanJuan {
+    +fabricarParteSuperior(): Prenda
+    +fabricarParteInferior(): Prenda
+    +fabricarCalzado(): Prenda
+}
+
+class SastreJohnson {
+    +fabricarParteSuperior(): Prenda
+    +fabricarParteInferior(): Prenda
+    +fabricarCalzado(): Prenda
+}
+
+abstract class MotorSugerencia {
+    +sugerirAtuendo(Usuario usuario): Atuendo
+    +sugerirAtuendos(Usuario usuario): List<Atuendo>
+    #validarPrendasDe(Usuario usuario): List<Prenda
+}
+
+class MotorSugerenciaFormalidad {
+    +validarPrendasDe(Usuario usuario): List<Prenda>
+}
+
+class MotorSugerenciaBasico {
+    +validarPrendasDe(Usuario usuario): List<Prenda>
+}
+
+class Usuario {
+    +edad: int
+    +prendas: List<Prenda>
+    +motorSugerencia: MotorSugerencia
+    +sugerirAtuendo(): Atuendo
+    +sugerirAtuendos(): List<Atuendo>
+    +esEdadAvanzada(): boolean
+}
+
+class CondicionClimatica {
+    +ciudad: String
+    +temperatura: Integer
+    +descripcion: String
+    +unidadTemperatura: String
+}
+
+interface ServicioMetereologico {
+    +obtenerCondicionesClimaticas(ciudad: String): List<CondicionClimatica>
+}
+
+class ServicioMetereologicoAccuWeather {
+    -api: AccuWeatherAPI
+    +obtenerCondicionesClimaticas(ciudad: String): List<CondicionClimatica>
+}
+
+class ServicioMetereologicoAccuWeatherCache {
+    -cache: ServicioCache<String, List<CondicionClimatica>>
+    -periodoDeValidez Duration
+    -servicioMetereologico ServicioMetereologico
+
+    +obtenerCondicionesClimaticas(ciudad: String): List<CondicionClimatica
+}
+
+class RespuestaAccuWeather {
+    +mapearACondicionesClimaticas(ciudad: String, datosClimaticos: List<Map<String, Object>>): List<CondicionClimatica>
+}
+
+class AccuWeatherAPI {
+    +getWeather(ciudad: String): List<Map<String, Object>>
+}
+
+interface Cache<K, V> {
+    +guardar(clave: K, valor: V, expiracion: LocalDateTime)
+    +obtener(clave: K): V
+    +contiene(clave: K): boolean
+}
+
+class ServicioCache<K, V> {
+    +guardar(clave: K, valor: V, expiracion: LocalDateTime)
+    +obtener(clave: K): V
+    +contiene(clave: K): boolean
+}
+
+class EntradaCache<V> {
+    +getValor(): V
+    +expiro(): boolean
+}
+
+abstract class Asesor {
+    +sugerirAtuendo(Usuario usuario): Atuendo
+}
+
+class AsesorImagen {
+    -servicioMetereologico ServicioMetereologico
+    +AsesorImagen(MotorSugerencia motorSugerencia)
+    +sugerirAtuendo(Usuario usuario): Atuendo
+}
+
+Guard --> PrendaBuilder
+Prenda --> TipoPrenda
+Prenda --> Color
+Prenda --> Trama
+Prenda --> Material
+Prenda --> Formalidad
+TipoPrenda --> Categoria
+PrendaBuilder --> Prenda
+Atuendo --> Prenda
+Sastre --> Atuendo
+SastreSanJuan --> Sastre
+SastreJohnson --> Sastre
+MotorSugerencia --> Usuario
+MotorSugerenciaFormalidad --> MotorSugerencia
+MotorSugerenciaBasico --> MotorSugerencia
+Usuario --> Atuendo
+ServicioMetereologicoAccuWeather --> ServicioMetereologico : implements
+ServicioMetereologicoAccuWeatherCache --> ServicioMetereologico : implements
+ServicioMetereologicoAccuWeatherCache --> Cache
+RespuestaAccuWeather --> CondicionClimatica
+ServicioMetereologicoAccuWeather --> AccuWeatherAPI
+AccuWeatherAPI --> RespuestaAccuWeather
+ServicioCache --> Cache : implements
+ServicioCache  --> EntradaCache
+Asesor --> Usuario
+Asesor --> Atuendo
+AsesorImagen --> MotorSugerencia
+AsesorImagen --> ServicioMetereologico
+AsesorImagen --> Asesor
+@enduml
