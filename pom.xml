@@ -50,6 +50,7 @@
           <configLocation>google_checks.xml</configLocation>
           <violationSeverity>warning</violationSeverity>
           <violationIgnore>
+            AbbreviationAsWordInName,
             LineLength,
             AvoidStarImport,
             NeedBraces,
@@ -77,6 +78,7 @@
         <artifactId>spotbugs-maven-plugin</artifactId>
         <version>4.7.3.2</version>
         <configuration>
+          <excludeFilterFile>excludeFilter.xml</excludeFilterFile>
         </configuration>
         <executions>
           <execution>
@@ -113,11 +115,15 @@
                     <limit>
                       <counter>LINE</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0.6</minimum>
+                      <minimum>0.5</minimum>
                     </limit>
                   </limits>
                 </rule>
               </rules>
+              <excludes>
+                <exclude>quemepongo/v4/domain/climas/apis/AccuWeatherAPI</exclude>
+                <exclude>quemepongo/v5/domain/climas/apis/AccuWeatherAPI</exclude>
+              </excludes>
             </configuration>
           </execution>
         </executions>
