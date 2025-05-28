@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import quemepongo.v5.domain.climas.CondicionClimatica;
-import quemepongo.v5.domain.climas.apis.RespuestaAccuWeather;
+import quemepongo.v4.domain.climas.CondicionClimatica;
 
 class RespuestaAccuWeatherTest {
   @Test
