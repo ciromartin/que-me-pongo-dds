@@ -1,0 +1,10 @@
+<FindBugsFilter>
+  <Match>
+    <Class name="quemepongo.v4.domain.asesores.AsesorImagen"/>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
+  <Match>
+    <Class name="quemepongo.v5.domain.asesores.AsesorImagen"/>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
+</FindBugsFilter>

@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import quemepongo.v4.domain.climas.CondicionClimatica;
+import quemepongo.v5.domain.climas.CondicionClimatica;
+import quemepongo.v5.domain.climas.apis.RespuestaAccuWeather;
 
 class RespuestaAccuWeatherTest {
   @Test
@@ -26,13 +27,13 @@ class RespuestaAccuWeatherTest {
 
     assertEquals(2, condiciones.size());
     assertEquals("Buenos Aires", condiciones.get(0).getCiudad());
+    assertEquals("Clear", condiciones.get(0).getDescripcion());
     assertEquals(25, condiciones.get(0).getTemperatura());
     assertEquals("C", condiciones.get(0).getUnidadTemperatura());
-    assertEquals("Clear", condiciones.get(0).getDescripcion());
 
     assertEquals("Buenos Aires", condiciones.get(1).getCiudad());
+    assertEquals("Sunny", condiciones.get(1).getDescripcion());
     assertEquals(30, condiciones.get(1).getTemperatura());
     assertEquals("C", condiciones.get(1).getUnidadTemperatura());
-    assertEquals("Sunny", condiciones.get(1).getDescripcion());
   }
 }

@@ -61,7 +61,9 @@ public class Prenda {
     return formalidad;
   }
 
-  public Integer getTemperaturaMaxima() {return temperaturaMaxima; }
+  public Integer getTemperaturaMaxima() {
+    return temperaturaMaxima;
+  }
 
   public Color getColorPrincipal() {
     return colorPrincipal;

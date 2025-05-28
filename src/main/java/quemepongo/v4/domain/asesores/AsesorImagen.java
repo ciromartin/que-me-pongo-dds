@@ -8,7 +8,7 @@ import quemepongo.v4.domain.exceptions.AtuendoNoValido;
 import quemepongo.v4.domain.sugerencias.MotorSugerencia;
 import quemepongo.v4.domain.usuarios.Usuario;
 
-public class AsesorImagen  implements  Asesor{
+public class AsesorImagen implements Asesor {
   private final Usuario usuario;
   private final ServicioMetereologico servicioMetereologico;
   private final MotorSugerencia motorSugerencia;
